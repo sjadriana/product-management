@@ -1,0 +1,8 @@
+<h2 mat-dialog-title>Confirmação de Exclusão</h2>
+<mat-dialog-content>
+  <p>Você tem certeza de que deseja excluir o produto com código "{{ data.code }}"?</p>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancelar</button>
+  <button mat-button color="warn" (click)="onConfirm()">Excluir</button>
+</mat-dialog-actions>
