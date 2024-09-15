@@ -1,0 +1,15 @@
+<div class="filtersTab">
+  <p>Filtros:</p>
+  <div class="container">
+    <ul class="tab">
+      <li *ngFor="let category of categories" class="item" [ngClass]="{ 'active': selectedCategory === category.value }"
+        (click)="selectCategory(category.value)">
+        <span>{{ category.label }}</span>
+      </li>
+    </ul>
+    <div class="search-code">
+      <input type="text" id="searchCode" class="custom-input" [(ngModel)]="searchCode"
+        (ngModelChange)="filterProducts()" placeholder="Buscar por código">
+    </div>
+  </div>
+</div>

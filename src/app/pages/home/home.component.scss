@@ -1,0 +1,23 @@
+.header {
+  height: 35px;
+  background: #161F27;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 99;
+  padding: 1rem 0 12px 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+
+  .header-title {
+    font-size: 26px;
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+
+    button {
+      margin-left: 8px;
+    }
+  }
+}
