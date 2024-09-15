@@ -1,19 +1,17 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, of } from 'rxjs';
-import { Product } from '../product.model';
-import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { Injectable } from '@angular/core'
+import { BehaviorSubject, Observable, of } from 'rxjs'
+import { Product } from '../product.model'
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-  private productsSubject = new BehaviorSubject<Product[]>([]);
-  products$ = this.productsSubject.asObservable();
+  private productsSubject = new BehaviorSubject<Product[]>([])
+  products$ = this.productsSubject.asObservable()
 
-  private categories = ['atacado', 'varejo', 'internacional', 'todos'];
+  private categories = ['atacado', 'varejo', 'internacional', 'todos']
 
   constructor() {
-    // Mock data
     this.productsSubject.next([
         {
           "id": "1",
@@ -135,34 +133,34 @@ export class ProductService {
           "name": "Produto 20",
           "category": "varejo"
         }
-      ]);
+      ])
   }
 
   getCategories(): string[] {
-    return this.categories;
+    return this.categories
   }
 
   checkCodeExists(code: number): Observable<boolean> {
-    const products = this.productsSubject.getValue();
-    const exists = products.some(product => product.code === code);
+    const products = this.productsSubject.getValue()
+    const exists = products.some(product => product.code === code)
     debugger
-    return of(exists);
+    return of(exists)
   }
 
   addProduct(product: Product): void {
-    const products = this.productsSubject.getValue();
-    this.productsSubject.next([...products, product]);
+    const products = this.productsSubject.getValue()
+    this.productsSubject.next([...products, product])
   }
 
   updateProduct(updatedProduct: Product): void {
     const products = this.productsSubject.getValue().map(product =>
       product.code === updatedProduct.code ? updatedProduct : product
-    );
-    this.productsSubject.next(products);
+    )
+    this.productsSubject.next(products)
   }
 
   deleteProduct(code: number): void {
-    const products = this.productsSubject.getValue().filter(product => product.code !== code);
-    this.productsSubject.next(products);
+    const products = this.productsSubject.getValue().filter(product => product.code !== code)
+    this.productsSubject.next(products)
   }
 }

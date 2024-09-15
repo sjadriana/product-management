@@ -1,7 +1,0 @@
-<div class="custom-select-container">
-  <select [(ngModel)]="selectedOption" (change)="selectOption($event)" class="custom-select">
-    <option *ngFor="let option of options" [value]="option.value">
-      {{ option.viewValue }}
-    </option>
-  </select>
-</div>

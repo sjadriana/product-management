@@ -1,7 +1,11 @@
 .filtersTab {
   height: 120px;
-  position: relative;
-  
+  background-color: #F1F1F1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 5px;
 
   p {
     color: #F25722;
@@ -12,21 +16,17 @@
 
   .container {
     display: flex;
-    flex-direction: column;
-    justify-content: center; // Centraliza verticalmente os itens na container
+    flex-direction: row;
+    align-items: center;
     width: 100%;
-    height: calc(100% - 40px); // Ajusta altura para o conteúdo não sobrepor o botão
-    position: relative;
-    flex-wrap: wrap;
-    align-content: space-between;
-
 
     .tab {
       display: flex;
       list-style: none;
       padding: 0;
       margin: 0;
-      align-items: center; // Garante que os itens na lista estejam centralizados verticalmente
+      align-items: center;
+      flex-wrap: wrap;
 
       .item {
         margin: 0 5px;
@@ -45,38 +45,38 @@
         }
       }
     }
-  }
-}
 
-.search-code {
-  // position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 400px; // Ajuste a largura conforme necessário
+    .search-code {
+      width: 400px;
 
-  .custom-input {
-    display: block;
-    width: 100%;
-    height: 42px;
-    padding: 8px 35px 6px 12px;
-    font-size: 14px;
-    line-height: 1.42857143;
-    background-color: #fff;
-    border: 1px solid #161F27;
-    border-radius: 5px;
-    box-sizing: border-box;
+      .custom-input {
+        display: block;
+        width: 100%;
+        height: 42px;
+        padding: 8px 35px 6px 12px;
+        font-size: 14px;
+        background-color: #fff;
+        border: 1px solid #161F27;
+        border-radius: 5px;
+        box-sizing: border-box;
 
-    &::placeholder {
-      color: #aaa;
+        &::placeholder {
+          color: #aaa;
+        }
+      }
     }
   }
 
-  .clearSearch {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer;
-    color: #161F27;
+  @media (max-width: 768px) {
+
+    .container {
+      flex-direction: column;
+      align-items: flex-start;
+
+      .search-code {
+        width: 100%;
+        margin-top: 10px;
+      }
+    }
   }
 }

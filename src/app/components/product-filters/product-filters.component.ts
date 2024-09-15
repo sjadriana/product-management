@@ -17,26 +17,22 @@ export class ProductFiltersComponent {
     { label: 'Internacional', value: 'Internacional' }
   ];
 
-  searchCode: string = '' // Propriedade de input para código
-  selectedCategory: string = 'todos' // Propriedade de categoria selecionada
+  searchCode: string = '' 
+  selectedCategory: string = 'todos' 
 
-  // Output para emitir o evento de filtro para o componente pai
   @Output() filterChange = new EventEmitter<{ code: string; category: string }>();
 
-  // Método para selecionar a categoria e emitir o evento de filtro
   selectCategory(category: string) {
     this.selectedCategory = category
     this.filterProducts()
   }
 
-  // Método para limpar o filtro e emitir o evento de filtro
   clearFilter() {
     this.searchCode = ''
     this.selectedCategory = 'todos'
     this.filterProducts()
   }
 
-  // Método para filtrar os produtos baseado no código e na categoria
   filterProducts() {
     this.filterChange.emit({
       code: this.searchCode,

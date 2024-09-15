@@ -1,69 +1,160 @@
-.product-list-container {
-  padding: 15px;
+::ng-deep table thead tr:first-child {
+  background-color: #161F27;
+  color: white;
+}
 
-  .header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 16px;
-    margin-top: 32px;
-  }
+.product-list-container {
+  padding: 1rem;
 
   .addNew {
     border-radius: 4px;
     background-color: #F25722;
     color: #fff;
     text-transform: uppercase;
-    padding: 10px 15px;
-    font-size: 14px;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     cursor: pointer;
+    margin: 10px 0px 10px 0px // Se quiser adicionar mais espaço entre o filtro e o botão
   }
+}
+
+.header-container {
+  display: flex; // Coloca o filtro e o botão na mesma linha
+  justify-content: space-between;
+  align-items: center;
+  margin: 2rem 0 1rem;
+
+  app-product-filters {
+    margin-right: 20px; // Adiciona espaço de 10px entre o filtro e o botão
+  }
+
+
 
   .product-list-table {
     width: 100%;
     border-collapse: collapse;
-    padding: 30px; // Adiciona o padding de 30px à tabela
+
+    .mat-header-row {
+      background-color: #f25722;
+      /* Cor de fundo para a linha do cabeçalho */
+      color: white;
+      /* Cor do texto no cabeçalho */
+    }
 
     th.mat-header-cell {
       background-color: #161F27;
       color: #fff;
       text-align: left;
       font-weight: bold;
-      position: sticky;
-      top: 0;
     }
 
     td.mat-cell {
       button {
-        margin: 0 4px;
+        margin: 0 0.5rem;
       }
     }
 
-    .mat-sort-header-sorted {
-      color: #F25722; // Destaque para a coluna ordenada
+    thead {
+      background-color: #F25722;
     }
 
-    .mat-column-code {
-      width: 15%; // Exemplo: 15% da largura total
-    }
-
-    .mat-column-name {
-      width: 15%; // Exemplo: 35% da largura total
-    }
-
-    .mat-column-category {
-      width: 15%; // Exemplo: 25% da largura total
-      text-align: left; // Centraliza os botões de ação
-    }
-
+    .mat-column-code,
+    .mat-column-name,
+    .mat-column-category,
     .mat-column-actions {
-      width: 15%; // Exemplo: 25% da largura total
-      text-align: right; // Centraliza os botões de ação
+      width: 25% // Divisão proporcional em telas menores,
     }
   }
 
   mat-paginator {
-    margin-top: 16px;
+    margin-top: 1rem;
+  }
+}
+
+// Estilos de acessibilidade e responsividade para o modal
+::ng-deep .mat-dialog-container {
+  width: 90vw; // Usar viewport width para flexibilidade
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+mat-dialog-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+// Responsividade para filtros
+.filtersTab {
+  p {
+    font-size: 1.25rem;
+    color: #F25722;
+    margin: 0;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: space-between;
+  }
+
+  .tab {
+    display: flex;
+    flex-wrap: wrap; // Envolver as categorias em múltiplas linhas
+
+    // .item {
+    //   margin: 0.5rem;
+    //   padding: 0.5rem 1rem;
+    //   cursor: pointer;
+    // }
+  }
+
+  // .search-code {
+  //   width: 100%;
+  //   margin-top: 1rem;
+  // }
+}
+
+// .search-code input {
+//   width: 100%;
+//   padding: 0.5rem;
+//   font-size: 1rem;
+// }
+
+// Ajustes de acessibilidade
+button[mat-icon-button] {
+  &:focus {
+    outline: 3px solid #F25722;
+  }
+}
+
+
+
+// Responsividade geral
+@media (max-width: 768px) {
+  .product-list-container {
+    padding: 1rem;
+  }
+
+  .header-container {
+    flex-direction: column;
+    align-items: stretch;
+    // height: 20vh;
+  }
+
+  .product-list-table {
+
+    td.mat-cell,
+    th.mat-header-cell {
+      font-size: 0.875rem;
+    }
+  }
+
+  .filtersTab {
+    flex-direction: column;
   }
 }
