@@ -1,0 +1,5 @@
+{
+  "codeRequired": "The code is required.",
+  "codeTaken": "This code is already taken.",
+  "invalidCode": "The code must be a valid number."
+}
