@@ -19,8 +19,8 @@ export const appConfig: ApplicationConfig = {
         paramsInheritanceStrategy: 'always',
       })
     ),
-    provideHttpClient(), // HTTP client provider
-    provideTranslate(), // Import TranslateModule configuration
+    provideHttpClient(), 
+    provideTranslate(), 
     provideAnimationsAsync(),
     { provide: LOCALE_ID, useValue: 'pt-BR' }
   ]

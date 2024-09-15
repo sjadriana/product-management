@@ -67,7 +67,7 @@ export class ProductListComponent implements AfterViewInit {
       const categoryMatch = this.selectedCategory === 'todos' || product.category.toLowerCase() === this.selectedCategory.toLowerCase()
       return searchCodeMatch && categoryMatch
     };
-    this.dataSource.filter = '' + Math.random(); // Para forçar o filtro a ser reavaliado
+    this.dataSource.filter = '' + Math.random(); 
   }
 
   onFilterChanged(event: { code: string; category: string }) {

@@ -15,21 +15,19 @@
     font-size: 1rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     cursor: pointer;
-    margin: 10px 0px 10px 0px // Se quiser adicionar mais espaço entre o filtro e o botão
+    margin: 10px 0px 10px 0px
   }
 }
 
 .header-container {
-  display: flex; // Coloca o filtro e o botão na mesma linha
+  display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 2rem 0 1rem;
 
   app-product-filters {
-    margin-right: 20px; // Adiciona espaço de 10px entre o filtro e o botão
+    margin-right: 20px;
   }
-
-
 
   .product-list-table {
     width: 100%;
@@ -37,9 +35,7 @@
 
     .mat-header-row {
       background-color: #f25722;
-      /* Cor de fundo para a linha do cabeçalho */
       color: white;
-      /* Cor do texto no cabeçalho */
     }
 
     th.mat-header-cell {
@@ -63,7 +59,7 @@
     .mat-column-name,
     .mat-column-category,
     .mat-column-actions {
-      width: 25% // Divisão proporcional em telas menores,
+      width: 25%;
     }
   }
 
@@ -72,9 +68,8 @@
   }
 }
 
-// Estilos de acessibilidade e responsividade para o modal
 ::ng-deep .mat-dialog-container {
-  width: 90vw; // Usar viewport width para flexibilidade
+  width: 90vw;
 }
 
 mat-form-field {
@@ -87,7 +82,6 @@ mat-dialog-content {
   gap: 1rem;
 }
 
-// Responsividade para filtros
 .filtersTab {
   p {
     font-size: 1.25rem;
@@ -104,34 +98,16 @@ mat-dialog-content {
 
   .tab {
     display: flex;
-    flex-wrap: wrap; // Envolver as categorias em múltiplas linhas
-
-    // .item {
-    //   margin: 0.5rem;
-    //   padding: 0.5rem 1rem;
-    //   cursor: pointer;
-    // }
+    flex-wrap: wrap;
   }
-
-  // .search-code {
-  //   width: 100%;
-  //   margin-top: 1rem;
-  // }
 }
 
-// .search-code input {
-//   width: 100%;
-//   padding: 0.5rem;
-//   font-size: 1rem;
-// }
 
-// Ajustes de acessibilidade
 button[mat-icon-button] {
   &:focus {
     outline: 3px solid #F25722;
   }
 }
-
 
 
 // Responsividade geral
@@ -143,11 +119,9 @@ button[mat-icon-button] {
   .header-container {
     flex-direction: column;
     align-items: stretch;
-    // height: 20vh;
   }
 
   .product-list-table {
-
     td.mat-cell,
     th.mat-header-cell {
       font-size: 0.875rem;
