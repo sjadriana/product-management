@@ -1,16 +1,16 @@
-import { Component } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Inject } from '@angular/core';
-import { CommonModule } from '@angular/common'; // Importar CommonModule
-import { MatDialogModule } from '@angular/material/dialog'; // Importar MatDialogModule
-import { MatButtonModule } from '@angular/material/button'; // Importar MatButtonModule
+import { Component } from '@angular/core'
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
+import { Inject } from '@angular/core'
+import { CommonModule } from '@angular/common' 
+import { MatDialogModule } from '@angular/material/dialog' 
+import { MatButtonModule } from '@angular/material/button' 
 
 @Component({
   selector: 'app-confirm-delete',
   standalone: true,
   templateUrl: './confirm-delete.component.html',
   styleUrls: ['./confirm-delete.component.scss'],
-  imports: [CommonModule, MatDialogModule, MatButtonModule] // Importar módulos necessários
+  imports: [CommonModule, MatDialogModule, MatButtonModule] 
 })
 export class ConfirmDeleteComponent {
   constructor(
@@ -19,10 +19,10 @@ export class ConfirmDeleteComponent {
   ) { }
 
   onConfirm(): void {
-    this.dialogRef.close(true);
+    this.dialogRef.close(true)
   }
 
   onCancel(): void {
-    this.dialogRef.close(false);
+    this.dialogRef.close(false)
   }
 }

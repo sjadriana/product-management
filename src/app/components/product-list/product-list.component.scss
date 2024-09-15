@@ -1,10 +1,12 @@
 .product-list-container {
-  padding: 30px;
+  padding: 15px;
 
   .header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 16px;
+    margin-top: 32px;
   }
 
   .addNew {
@@ -23,34 +25,45 @@
     border-collapse: collapse;
     padding: 30px; // Adiciona o padding de 30px à tabela
 
-    thead {
+    th.mat-header-cell {
       background-color: #161F27;
       color: #fff;
-      height: 46px;
+      text-align: left;
+      font-weight: bold;
+      position: sticky;
+      top: 0;
+    }
 
-      .header-cell {
-        padding: 8px;
-        text-align: left;
-        border-bottom: 2px solid #ddd;
-        font-weight: bold;
+    td.mat-cell {
+      button {
+        margin: 0 4px;
       }
     }
 
-    tbody {
-      tr {
-        &:nth-child(even) {
-          background-color: #f9f9f9;
-        }
-
-        td {
-          padding: 8px;
-          border-bottom: 1px solid #ddd;
-
-          button {
-            margin: 0 4px;
-          }
-        }
-      }
+    .mat-sort-header-sorted {
+      color: #F25722; // Destaque para a coluna ordenada
     }
+
+    .mat-column-code {
+      width: 15%; // Exemplo: 15% da largura total
+    }
+
+    .mat-column-name {
+      width: 15%; // Exemplo: 35% da largura total
+    }
+
+    .mat-column-category {
+      width: 15%; // Exemplo: 25% da largura total
+      text-align: left; // Centraliza os botões de ação
+    }
+
+    .mat-column-actions {
+      width: 15%; // Exemplo: 25% da largura total
+      text-align: right; // Centraliza os botões de ação
+    }
+  }
+
+  mat-paginator {
+    margin-top: 16px;
   }
 }
