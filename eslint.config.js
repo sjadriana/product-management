@@ -14,6 +14,7 @@ module.exports = tseslint.config(
       ...angular.configs.tsRecommended,
       prettier
     ],
+    ignores: ["commitlint.config.js"],
     processor: angular.processInlineTemplates,
     rules: {
       "@angular-eslint/directive-selector": [
