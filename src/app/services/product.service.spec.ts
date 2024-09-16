@@ -16,7 +16,7 @@ describe('ProductService', () => {
 
   it('should return a list of categories', () => {
     const categories = service.getCategories()
-    expect(categories).toEqual(['atacado', 'varejo', 'internacional', 'todos'])
+    expect(categories).toEqual(['Atacado', 'Varejo', 'Internacional', ])
   })
 
 
