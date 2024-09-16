@@ -1,4 +1,4 @@
-<h2 mat-dialog-title>{{ data.code ? 'Editar Produto' : 'Adicionar Novo Produto' }}</h2>
+<h2 mat-dialog-title>{{ data?.code ? 'Editar Produto' : 'Adicionar Novo Produto' }}</h2>
 <form [formGroup]="productForm" (ngSubmit)="onSave()">
   <mat-dialog-content>
     <div>
@@ -9,7 +9,7 @@
           *ngIf="productForm.get('code')?.hasError('required') && (submitAttempted || productForm.get('code')?.touched)">
           O código é obrigatório.
         </mat-error>
-        <mat-error *ngIf="productForm.get('code')?.hasError('codeTaken') && submitAttempted">
+        <mat-error *ngIf="productForm.get('code')?.hasError('codeTaken')">
           Este código já está cadastrado.
         </mat-error>
         <mat-error *ngIf="productForm.get('code')?.hasError('pattern') && submitAttempted">

@@ -17,8 +17,8 @@ export class ProductFiltersComponent {
     { label: 'Internacional', value: 'Internacional' }
   ]
 
-  searchCode = '' // Remover a anotação de tipo
-  selectedCategory = '' // Remover a anotação de tipo
+  searchCode = '' 
+  selectedCategory = ''
 
   @Output() filterChange = new EventEmitter<{ code: string; category: string }>()
 

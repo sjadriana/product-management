@@ -11,7 +11,7 @@ import { ProductService } from '../../services/product.service'
 import { ProductFormComponent } from '../product-form/product-form.component'
 import { ConfirmDeleteComponent } from '../confirm-delete/confirm-delete.component'
 import { ProductFiltersComponent } from '../product-filters/product-filters.component'
-import { Product } from '../../product.model'
+import { Product } from '../model/product.model'
 import { MatCardModule } from '@angular/material/card'
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator'
 import { MatSort, MatSortModule } from '@angular/material/sort'
@@ -47,7 +47,7 @@ export class ProductListComponent implements AfterViewInit {
   @ViewChild(MatSort) sort!: MatSort
 
   searchCode = ''
-  selectedCategory  = 'todos'
+  selectedCategory = 'todos'
 
   constructor() {
     this.productService.products$.subscribe(products => {
@@ -67,7 +67,7 @@ export class ProductListComponent implements AfterViewInit {
       const categoryMatch = this.selectedCategory === 'todos' || product.category.toLowerCase() === this.selectedCategory.toLowerCase()
       return searchCodeMatch && categoryMatch
     };
-    this.dataSource.filter = '' + Math.random(); 
+    this.dataSource.filter = '' + Math.random()
   }
 
   onFilterChanged(event: { code: string; category: string }) {
@@ -78,9 +78,9 @@ export class ProductListComponent implements AfterViewInit {
 
   openProductForm(product?: Product) {
     const dialogRef = this.dialog.open(ProductFormComponent, {
-      width: '300px',
+      width: '50vw',
       data: product || {}
-    })
+    });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
@@ -92,6 +92,7 @@ export class ProductListComponent implements AfterViewInit {
       }
     })
   }
+
 
   confirmDelete(code: number) {
     const dialogRef = this.dialog.open(ConfirmDeleteComponent, {

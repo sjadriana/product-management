@@ -9,7 +9,7 @@ import { of } from 'rxjs'
 
 import { ProductListComponent } from './product-list.component'
 import { ProductService } from '../../services/product.service'
-import { Product } from '../../product.model'
+import { Product } from '../model/product.model'
 import { ProductFiltersComponent } from '../product-filters/product-filters.component'
 import { ConfirmDeleteComponent } from '../confirm-delete/confirm-delete.component'
 import { ProductFormComponent } from '../product-form/product-form.component'

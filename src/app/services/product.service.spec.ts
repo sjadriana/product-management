@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing'
 import { ProductService } from './product.service'
-import { Product } from '../product.model'
+import { Product } from '../components/model/product.model'
 
 describe('ProductService', () => {
   let service: ProductService
@@ -9,16 +9,16 @@ describe('ProductService', () => {
     TestBed.configureTestingModule({})
     service = TestBed.inject(ProductService)
   })
-  
+
   it('should be created', () => {
     expect(service).toBeTruthy()
   })
-  
+
   it('should return a list of categories', () => {
     const categories = service.getCategories()
     expect(categories).toEqual(['atacado', 'varejo', 'internacional', 'todos'])
   })
-  
+
 
   it('should check if a product code exists', (done: DoneFn) => {
     service.checkCodeExists(1011).subscribe(exists => {
@@ -29,7 +29,7 @@ describe('ProductService', () => {
       })
     })
   })
-  
+
 
   it('should add a new product', () => {
     const newProduct: Product = {
@@ -44,7 +44,7 @@ describe('ProductService', () => {
     service.products$.subscribe(products => {
       expect(products).toContain(newProduct)
     })
-    
+
   })
 
   it('should update an existing product', () => {
@@ -62,7 +62,7 @@ describe('ProductService', () => {
       expect(product).toEqual(updatedProduct)
     })
   })
-  
+
   it('should delete a product', () => {
     const codeToDelete = 1011
     service.deleteProduct(codeToDelete)

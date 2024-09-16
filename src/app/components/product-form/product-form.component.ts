@@ -64,9 +64,14 @@ export class ProductFormComponent {
   onSave(): void {
     this.submitAttempted = true
     if (this.productForm.valid) {
-      this.dialogRef.close(this.productForm.value)
+      const updatedProduct = {
+        ...this.productForm.getRawValue(),  
+        code: this.data?.code || null       
+      };
+      this.dialogRef.close(updatedProduct) 
     }
   }
+
 
   onCancel(): void {
     this.dialogRef.close()
