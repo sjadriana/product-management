@@ -143,7 +143,6 @@ export class ProductService {
   checkCodeExists(code: number): Observable<boolean> {
     const products = this.productsSubject.getValue()
     const exists = products.some(product => product.code === code)
-    debugger
     return of(exists)
   }
 

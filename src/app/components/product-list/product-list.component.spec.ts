@@ -15,12 +15,22 @@ import { ConfirmDeleteComponent } from '../confirm-delete/confirm-delete.compone
 import { ProductFormComponent } from '../product-form/product-form.component'
 
 class MockProductService {
-  products$ = of([{ code: 1, name: 'Product 1', category: 'Category 1' } as Product])
-  addProduct(product: Product) { }
-  updateProduct(product: Product) { }
-  deleteProduct(code: number) { }
-}
+  products$ = of([{ code: 1, name: 'Product 1', category: 'Category 1' } as Product]);
+  addProduct(product: Product) {
+    console.log('Add product called with:', product);
+    return of(product);
+  }
 
+  updateProduct(product: Product) {
+    console.log('Update product called with:', product);
+    return of(product);
+  }
+
+  deleteProduct(code: number) {
+    console.log('Delete product called with code:', code);
+    return of(code);
+  }
+}
 class MockMatDialog {
   open() {
     return {

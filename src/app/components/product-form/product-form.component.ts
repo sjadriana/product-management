@@ -11,6 +11,12 @@ import { MatSelectModule } from '@angular/material/select'
 import { MatDialogModule } from '@angular/material/dialog'
 import { ProductService } from '../../services/product.service'
 
+interface ProductData {
+  code: number;
+  name: string;
+  category: string;
+}
+
 @Component({
   selector: 'app-product-form',
   standalone: true,
@@ -28,25 +34,25 @@ export class ProductFormComponent {
     private fb: FormBuilder,
     private productService: ProductService,
     public dialogRef: MatDialogRef<ProductFormComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: ProductData | null
   ) {
     this.categories = this.productService.getCategories()
-    this.isEditing = !!data.code
+    this.isEditing = !!data?.code
 
     this.productForm = this.fb.group({
       code: [
-        { value: data.code || '', disabled: this.isEditing },
-        [Validators.required, Validators.pattern(/^\d+$/)],
+        { value: data?.code || '', disabled: this.isEditing },
+        [Validators.required],
         this.isEditing ? [] : [this.codeValidator()]
       ],
-      name: [data.name || '', Validators.required],
-      category: [data.category || '', Validators.required]
+      name: [data?.name || '', Validators.required],
+      category: [data?.category || '', Validators.required]
     })
   }
 
   codeValidator() {
-    return (control: AbstractControl<any, any> | null): Observable<ValidationErrors | null> => {
-      if (!control) {
+    return (control: AbstractControl<number | null>): Observable<ValidationErrors | null> => {
+      if (control.value === null) {
         return of(null)
       }
       return this.productService.checkCodeExists(control.value).pipe(
@@ -58,22 +64,7 @@ export class ProductFormComponent {
   onSave(): void {
     this.submitAttempted = true
     if (this.productForm.valid) {
-      const codeControl = this.productForm.get('code')
-      const nameControl = this.productForm.get('name')
-      const categoryControl = this.productForm.get('category')
-
-      if (codeControl) {
-        codeControl.updateValueAndValidity()
-      }
-      if (nameControl) {
-        nameControl.updateValueAndValidity()
-      }
-      if (categoryControl) {
-        categoryControl.updateValueAndValidity()
-      }
-      if (this.productForm.valid) {
-        this.dialogRef.close(this.productForm.value)
-      }
+      this.dialogRef.close(this.productForm.value)
     }
   }
 

@@ -3,7 +3,8 @@
   <div class="container">
     <ul class="tab">
       <li *ngFor="let category of categories" class="item" [ngClass]="{ 'active': selectedCategory === category.value }"
-        (click)="selectCategory(category.value)">
+        (click)="selectCategory(category.value)" (keydown.enter)="selectCategory(category.value)"
+        (keydown.space)="selectCategory(category.value)" tabindex="0">
         <span>{{ category.label }}</span>
       </li>
     </ul>

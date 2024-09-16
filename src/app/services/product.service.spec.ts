@@ -1,50 +1,33 @@
 import { TestBed } from '@angular/core/testing'
-
-import { of } from 'rxjs'
-
 import { ProductService } from './product.service'
-
 import { Product } from '../product.model'
-
 
 describe('ProductService', () => {
   let service: ProductService
-  
 
   beforeEach(() => {
     TestBed.configureTestingModule({})
-    
     service = TestBed.inject(ProductService)
-    
   })
   
   it('should be created', () => {
     expect(service).toBeTruthy()
-    
   })
   
-
   it('should return a list of categories', () => {
     const categories = service.getCategories()
-    
     expect(categories).toEqual(['atacado', 'varejo', 'internacional', 'todos'])
-    
   })
   
 
   it('should check if a product code exists', (done: DoneFn) => {
     service.checkCodeExists(1011).subscribe(exists => {
       expect(exists).toBeTrue()
-      
       service.checkCodeExists(9999).subscribe(exists => {
         expect(exists).toBeFalse()
-        
         done()
-        
       })
-      
     })
-    
   })
   
 
@@ -55,18 +38,14 @@ describe('ProductService', () => {
       name: 'Produto 21',
       category: 'varejo'
     }
-    
 
     service.addProduct(newProduct)
-    
 
     service.products$.subscribe(products => {
       expect(products).toContain(newProduct)
-      
     })
     
   })
-  
 
   it('should update an existing product', () => {
     const updatedProduct: Product = {
@@ -75,36 +54,22 @@ describe('ProductService', () => {
       name: 'Produto Atualizado',
       category: 'varejo'
     }
-    
 
     service.updateProduct(updatedProduct)
-    
 
     service.products$.subscribe(products => {
       const product = products.find(p => p.code === updatedProduct.code)
-      
       expect(product).toEqual(updatedProduct)
-      
     })
-    
   })
   
-
   it('should delete a product', () => {
     const codeToDelete = 1011
-    
-
     service.deleteProduct(codeToDelete)
-    
-
     service.products$.subscribe(products => {
       const product = products.find(p => p.code === codeToDelete)
-      
       expect(product).toBeUndefined()
-      
     })
-    
   })
-  
 })
 

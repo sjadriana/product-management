@@ -15,12 +15,12 @@ export class ProductFiltersComponent {
     { label: 'Varejo', value: 'Varejo' },
     { label: 'Atacado', value: 'Atacado' },
     { label: 'Internacional', value: 'Internacional' }
-  ];
+  ]
 
-  searchCode: string = '' 
-  selectedCategory: string = 'todos' 
+  searchCode = '' // Remover a anotação de tipo
+  selectedCategory = '' // Remover a anotação de tipo
 
-  @Output() filterChange = new EventEmitter<{ code: string; category: string }>();
+  @Output() filterChange = new EventEmitter<{ code: string; category: string }>()
 
   selectCategory(category: string) {
     this.selectedCategory = category

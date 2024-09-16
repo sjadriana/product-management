@@ -6,7 +6,6 @@ import { routes } from './app.routes';
 import localePt from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
 import { provideTranslate } from './app.translate';
-import { NgModule } from '@angular/core';
 
 registerLocaleData(localePt);
 

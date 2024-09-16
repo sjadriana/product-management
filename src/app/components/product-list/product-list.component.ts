@@ -46,8 +46,8 @@ export class ProductListComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator
   @ViewChild(MatSort) sort!: MatSort
 
-  searchCode: string = ''
-  selectedCategory: string = 'todos'
+  searchCode = ''
+  selectedCategory  = 'todos'
 
   constructor() {
     this.productService.products$.subscribe(products => {
@@ -62,7 +62,7 @@ export class ProductListComponent implements AfterViewInit {
   }
 
   filterProducts() {
-    this.dataSource.filterPredicate = (product: Product, filter: string) => {
+    this.dataSource.filterPredicate = (product: Product) => {
       const searchCodeMatch = this.searchCode ? product.code.toString().includes(this.searchCode) : true
       const categoryMatch = this.selectedCategory === 'todos' || product.category.toLowerCase() === this.selectedCategory.toLowerCase()
       return searchCodeMatch && categoryMatch
