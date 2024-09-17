@@ -27,8 +27,9 @@ O **ProdutosApp** é uma aplicação SPA desenvolvida com Angular (versão 18.2.
   - Implementação para evitar a duplicação de códigos de produtos.
 
 - **Estilo e Experiência do Usuário**
-  - Interface estilizada com SCSS personalizado, seguindo as diretrizes visuais do Itaú Personalité Asset Management.
+  - Interface estilizada com SCSS personalizado.
   - Foco em usabilidade e aparência limpa e intuitiva.
+  - Experiência inclusiva para todos os usuários, incluindo aqueles com deficiências, implementando práticas de acessibilidade.
 
 - **Paginação e Ordenação**
   - Tabela de produtos com funcionalidades de paginação e ordenação.

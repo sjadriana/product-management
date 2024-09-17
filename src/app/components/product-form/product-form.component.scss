@@ -9,16 +9,16 @@ mat-form-field {
 mat-dialog-content {
   display: flex;
   flex-direction: column;
-  gap: 16px; 
+  gap: 16px;
 }
 
-input[type="string"]::-webkit-inner-spin-button,
-input[type="string"]::-webkit-outer-spin-button {
+input[type="text"]::-webkit-inner-spin-button,
+input[type="text"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
-input[type="string"] {
+input[type="text"] {
   -moz-appearance: textfield;
   /* Para Firefox */
 }
