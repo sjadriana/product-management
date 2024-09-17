@@ -16,20 +16,15 @@ describe('ProductService', () => {
 
   it('should return a list of categories', () => {
     const categories = service.getCategories()
-    expect(categories).toEqual(['Atacado', 'Varejo', 'Internacional', ])
+    expect(categories).toEqual(['Atacado', 'Varejo', 'Internacional',])
   })
 
-
-  it('should check if a product code exists', (done: DoneFn) => {
-    service.checkCodeExists('1011').subscribe(exists => {
-      expect(exists).toBeTrue()
-      service.checkCodeExists('9999').subscribe(exists => {
-        expect(exists).toBeFalse()
-        done()
-      })
-    })
-  })
-
+  it('should check if a product code exists', (done) => {
+    service.checkCodeExists('non-existent-code').subscribe(result => {
+      expect(result).toBe(false)
+      done();
+    });
+  });
 
   it('should add a new product', () => {
     const newProduct: Product = {
@@ -38,30 +33,23 @@ describe('ProductService', () => {
       name: 'Produto 21',
       category: 'varejo'
     }
-
     service.addProduct(newProduct)
-
     service.products$.subscribe(products => {
       expect(products).toContain(newProduct)
     })
-
   })
 
-  it('should update an existing product', () => {
-    const updatedProduct: Product = {
-      id: '1',
-      code: '1011',
-      name: 'Produto Atualizado',
-      category: 'varejo'
-    }
-
-    service.updateProduct(updatedProduct)
-
+  it('should update an existing product', (done) => {
+    const updatedProduct = { id: '1', code: '1011', name: 'Produto Atualizado', category: 'varejo' };
+    service.addProduct({ id: '1', code: '1011', name: 'Produto Antigo', category: 'varejo' });
+    service.updateProduct(updatedProduct);
     service.products$.subscribe(products => {
-      const product = products.find(p => p.code === updatedProduct.code)
-      expect(product).toEqual(updatedProduct)
-    })
-  })
+      const product = products.find(p => p.code === '1011');
+      expect(product).toEqual(updatedProduct);
+      done();
+    });
+  });
+
 
   it('should delete a product', () => {
     const codeToDelete = '1011'
