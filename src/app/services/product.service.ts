@@ -142,10 +142,11 @@ export class ProductService {
   }
 
   checkCodeExists(code: string): Observable<boolean> {
-    const products = this.productsSubject.getValue()
-    const exists = products.some(product => product.code === code.toUpperCase())
-    return of(exists)
+    const products = this.productsSubject.getValue();
+    const exists = products.some(product => product.code.toUpperCase() === code.toUpperCase());
+    return of(exists);
   }
+
 
   addProduct(product: Product): void {
     const products = this.productsSubject.getValue()
@@ -153,11 +154,13 @@ export class ProductService {
   }
 
   updateProduct(updatedProduct: Product): void {
-    const products = this.productsSubject.getValue().map(product =>
-      product.code === updatedProduct.code ? updatedProduct : product
-    )
-    this.productsSubject.next(products)
+    const products = this.productsSubject.getValue();
+    const updatedProducts = products.map(product =>
+      product.code === updatedProduct.code ? { ...product, ...updatedProduct } : product
+    );
+    this.productsSubject.next(updatedProducts);
   }
+
 
   deleteProduct(code: string): void {
     const products = this.productsSubject.getValue().filter(product => product.code !== code)
