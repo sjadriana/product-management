@@ -1,0 +1,36 @@
+.video-container {
+  position: relative;
+  width: 100%;
+  height: 400px;
+
+  h1 {
+    font-size: 40px;
+    color: #161F27;
+  }
+
+  p {
+    font-size: 20px;
+    color: #161F27;
+  }
+}
+
+.video-background {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.fallback-image {
+  display: none;
+  width: 100%;
+  height: auto;
+}
+
+.text-overlay {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+}

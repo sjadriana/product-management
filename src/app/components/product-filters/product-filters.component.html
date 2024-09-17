@@ -3,13 +3,20 @@
   <div class="container">
     <ul class="tab">
       <li *ngFor="let category of categories" class="item" [ngClass]="{ 'active': selectedCategory === category.value }"
-        (click)="selectCategory(category.value)">
+        (click)="selectCategory(category.value)" (keydown.enter)="selectCategory(category.value)"
+        (keydown.space)="selectCategory(category.value)" tabindex="0"
+        [attr.aria-selected]="selectedCategory === category.value ? 'true' : 'false'"
+        [attr.aria-label]="'Filtrar por categoria ' + category.label">
         <span>{{ category.label }}</span>
       </li>
     </ul>
+    <button class="clear-button" (click)="clearFilter()" aria-label="Limpar todos os filtros">
+      Limpar Filtros
+    </button>
     <div class="search-code">
+      <label for="searchCode" class="sr-only">Buscar por código:</label>
       <input type="text" id="searchCode" class="custom-input" [(ngModel)]="searchCode"
-        (ngModelChange)="filterProducts()" placeholder="Buscar por código">
+        (ngModelChange)="filterProducts()" placeholder="Buscar por código" aria-label="Buscar por código">
     </div>
   </div>
 </div>

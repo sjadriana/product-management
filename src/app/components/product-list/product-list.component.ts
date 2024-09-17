@@ -11,10 +11,11 @@ import { ProductService } from '../../services/product.service'
 import { ProductFormComponent } from '../product-form/product-form.component'
 import { ConfirmDeleteComponent } from '../confirm-delete/confirm-delete.component'
 import { ProductFiltersComponent } from '../product-filters/product-filters.component'
-import { Product } from '../../product.model'
+import { Product } from '../model/product.model'
 import { MatCardModule } from '@angular/material/card'
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator'
 import { MatSort, MatSortModule } from '@angular/material/sort'
+import { BannerComponent } from '../banner/banner.component'
 
 @Component({
   selector: 'app-product-list',
@@ -34,6 +35,7 @@ import { MatSort, MatSortModule } from '@angular/material/sort'
     MatCardModule,
     MatPaginatorModule,
     MatSortModule,
+    BannerComponent
   ]
 })
 export class ProductListComponent implements AfterViewInit {
@@ -42,12 +44,13 @@ export class ProductListComponent implements AfterViewInit {
 
   displayedColumns: string[] = ['code', 'name', 'category', 'actions']
   dataSource = new MatTableDataSource<Product>()
+  noProductsFound = false
 
   @ViewChild(MatPaginator) paginator!: MatPaginator
   @ViewChild(MatSort) sort!: MatSort
 
-  searchCode: string = ''
-  selectedCategory: string = 'todos'
+  searchCode = ''
+  selectedCategory = 'todos'
 
   constructor() {
     this.productService.products$.subscribe(products => {
@@ -56,31 +59,35 @@ export class ProductListComponent implements AfterViewInit {
     });
   }
 
+
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator
     this.dataSource.sort = this.sort
   }
 
   filterProducts() {
-    this.dataSource.filterPredicate = (product: Product, filter: string) => {
-      const searchCodeMatch = this.searchCode ? product.code.toString().includes(this.searchCode) : true
+    this.dataSource.filterPredicate = (product: Product) => {
+      const searchCodeMatch = this.searchCode ? product.code.toUpperCase().includes(this.searchCode.toUpperCase()) : true;
       const categoryMatch = this.selectedCategory === 'todos' || product.category.toLowerCase() === this.selectedCategory.toLowerCase()
       return searchCodeMatch && categoryMatch
-    };
-    this.dataSource.filter = '' + Math.random(); 
+    }
+
+    this.dataSource.filter = '' + Math.random()
+    this.noProductsFound = this.dataSource.filteredData.length === 0
   }
 
   onFilterChanged(event: { code: string; category: string }) {
-    this.searchCode = event.code
+    this.searchCode = event.code.toUpperCase()
     this.selectedCategory = event.category
-    this.filterProducts()
+    this.filterProducts();
   }
+
 
   openProductForm(product?: Product) {
     const dialogRef = this.dialog.open(ProductFormComponent, {
-      width: '300px',
+      width: '50vw',
       data: product || {}
-    })
+    });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
@@ -93,7 +100,7 @@ export class ProductListComponent implements AfterViewInit {
     })
   }
 
-  confirmDelete(code: number) {
+  confirmDelete(code: string) {
     const dialogRef = this.dialog.open(ConfirmDeleteComponent, {
       width: '300px',
       data: { code }

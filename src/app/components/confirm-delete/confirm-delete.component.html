@@ -3,6 +3,6 @@
   <p>Você tem certeza de que deseja excluir o produto com código "{{ data.code }}"?</p>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-button (click)="onCancel()">Cancelar</button>
-  <button mat-button color="warn" (click)="onConfirm()">Excluir</button>
+  <button mat-button (click)="onCancel()" aria-label="Cancelar exclusão">Cancelar</button>
+  <button mat-button color="warn" (click)="onConfirm()" aria-label="Confirmar exclusão">Excluir</button>
 </mat-dialog-actions>

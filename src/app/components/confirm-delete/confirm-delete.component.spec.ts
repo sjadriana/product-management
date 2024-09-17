@@ -17,7 +17,7 @@ describe('ConfirmDeleteComponent', () => {
       imports: [CommonModule, MatDialogModule, MatButtonModule, ConfirmDeleteComponent],
       providers: [
         { provide: MatDialogRef, useValue: dialogRefSpy },
-        { provide: MAT_DIALOG_DATA, useValue: { code: 123 } }
+        { provide: MAT_DIALOG_DATA, useValue: { code: '123' } }
       ]
     }).compileComponents()
 

@@ -15,12 +15,16 @@ export class ProductFiltersComponent {
     { label: 'Varejo', value: 'Varejo' },
     { label: 'Atacado', value: 'Atacado' },
     { label: 'Internacional', value: 'Internacional' }
-  ];
+  ]
 
-  searchCode: string = '' 
-  selectedCategory: string = 'todos' 
+  searchCode = ''
+  selectedCategory = 'todos'
 
-  @Output() filterChange = new EventEmitter<{ code: string; category: string }>();
+  @Output() filterChange = new EventEmitter<{ code: string; category: string }>()
+
+  ngOnInit() {
+    this.clearFilter()
+  }
 
   selectCategory(category: string) {
     this.selectedCategory = category

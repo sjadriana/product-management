@@ -9,18 +9,28 @@ import { of } from 'rxjs'
 
 import { ProductListComponent } from './product-list.component'
 import { ProductService } from '../../services/product.service'
-import { Product } from '../../product.model'
+import { Product } from '../model/product.model'
 import { ProductFiltersComponent } from '../product-filters/product-filters.component'
 import { ConfirmDeleteComponent } from '../confirm-delete/confirm-delete.component'
 import { ProductFormComponent } from '../product-form/product-form.component'
 
 class MockProductService {
-  products$ = of([{ code: 1, name: 'Product 1', category: 'Category 1' } as Product])
-  addProduct(product: Product) { }
-  updateProduct(product: Product) { }
-  deleteProduct(code: number) { }
-}
+  products$ = of([{ code: '1', name: 'Product 1', category: 'Category 1' } as Product]);
+  addProduct(product: Product) {
+    console.log('Add product called with:', product);
+    return of(product);
+  }
 
+  updateProduct(product: Product) {
+    console.log('Update product called with:', product);
+    return of(product);
+  }
+
+  deleteProduct(code: string) {
+    console.log('Delete product called with code:', code);
+    return of(code);
+  }
+}
 class MockMatDialog {
   open() {
     return {
@@ -75,7 +85,7 @@ describe('ProductListComponent', () => {
 
   it('should confirm deletion', () => {
     const openSpy = spyOn(component['dialog'], 'open').and.callThrough()
-    component.confirmDelete(1)
+    component.confirmDelete('1')
     expect(openSpy).toHaveBeenCalled()
   })
 })
