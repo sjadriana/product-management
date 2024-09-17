@@ -10,21 +10,21 @@
   p {
     font-size: 20px;
   }
-}
 
-.video-background {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+  .video-background {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 
-.text-overlay {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  color: white;
-  padding: 20px;
-  border-radius: 10px;
+  .text-overlay {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+  }
 }
 
 .product-list-container {
@@ -36,8 +36,7 @@
     font-size: medium;
   }
 
-  ::ng-deep table thead th.mat-sort-header-sorted .mat-sort-header-arrow,
-  ::ng-deep table thead th.mat-sort-header .mat-sort-header-arrow {
+  ::ng-deep table thead th .mat-sort-header-arrow {
     color: white !important;
   }
 
@@ -48,7 +47,7 @@
     text-transform: uppercase;
     padding: 0.5rem 1rem;
     font-size: 1rem;
-    margin: 10px 0px 20px 0px
+    margin: 10px 0 20px 0;
   }
 
   .no-products-found {
@@ -58,10 +57,9 @@
     border-radius: 8px;
     background-color: #F1F1F1;
     color: #161F27;
-    font-family: 'sans-serif';
     font-size: 1.2rem;
+    font-family: 'sans-serif';
   }
-
 }
 
 .product-list-table {
@@ -71,16 +69,9 @@
 
   th.mat-header-cell,
   td.mat-cell {
+    word-wrap: break-word;
     white-space: normal;
-    word-wrap: break-word;
     overflow: hidden;
-  }
-
-  .mat-column-code,
-  .mat-column-name,
-  .mat-column-category,
-  .mat-column-actions {
-    word-wrap: break-word;
   }
 
   .mat-column-actions {
@@ -98,7 +89,6 @@ mat-paginator {
 
 mat-form-field {
   width: 100%;
-
 }
 
 mat-dialog-content {
@@ -107,10 +97,8 @@ mat-dialog-content {
   gap: 1rem;
 }
 
-button[mat-icon-button] {
-  &:focus {
-    outline: none;
-  }
+button[mat-icon-button]:focus {
+  outline: none;
 }
 
 @media (max-width: 768px) {
@@ -118,10 +106,7 @@ button[mat-icon-button] {
     padding: 1rem;
   }
 
-  .product-list-table {
-
-    th.mat-header-cell {
-      font-size: 0.875rem;
-    }
+  .product-list-table th.mat-header-cell {
+    font-size: 0.875rem;
   }
 }
