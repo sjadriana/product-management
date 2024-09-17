@@ -27,7 +27,7 @@ jobs:
       - name: Run tests
         env:
           CHROME_BIN: /usr/bin/chromium-browser
-        run: npm test
+        run: npm test -- --watch=false --browsers=ChromeHeadless
 
       - name: Build project
         run: npm run build
