@@ -15,7 +15,7 @@ import { ConfirmDeleteComponent } from '../confirm-delete/confirm-delete.compone
 import { ProductFormComponent } from '../product-form/product-form.component'
 
 class MockProductService {
-  products$ = of([{ code: 1, name: 'Product 1', category: 'Category 1' } as Product]);
+  products$ = of([{ code: '1', name: 'Product 1', category: 'Category 1' } as Product]);
   addProduct(product: Product) {
     console.log('Add product called with:', product);
     return of(product);
@@ -85,7 +85,7 @@ describe('ProductListComponent', () => {
 
   it('should confirm deletion', () => {
     const openSpy = spyOn(component['dialog'], 'open').and.callThrough()
-    component.confirmDelete(1)
+    component.confirmDelete('1')
     expect(openSpy).toHaveBeenCalled()
   })
 })

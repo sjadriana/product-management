@@ -15,6 +15,7 @@ import { Product } from '../model/product.model'
 import { MatCardModule } from '@angular/material/card'
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator'
 import { MatSort, MatSortModule } from '@angular/material/sort'
+import { BannerComponent } from '../banner/banner.component'
 
 @Component({
   selector: 'app-product-list',
@@ -34,6 +35,7 @@ import { MatSort, MatSortModule } from '@angular/material/sort'
     MatCardModule,
     MatPaginatorModule,
     MatSortModule,
+    BannerComponent
   ]
 })
 export class ProductListComponent implements AfterViewInit {
@@ -42,6 +44,7 @@ export class ProductListComponent implements AfterViewInit {
 
   displayedColumns: string[] = ['code', 'name', 'category', 'actions']
   dataSource = new MatTableDataSource<Product>()
+  noProductsFound = false
 
   @ViewChild(MatPaginator) paginator!: MatPaginator
   @ViewChild(MatSort) sort!: MatSort
@@ -63,11 +66,13 @@ export class ProductListComponent implements AfterViewInit {
 
   filterProducts() {
     this.dataSource.filterPredicate = (product: Product) => {
-      const searchCodeMatch = this.searchCode ? product.code.toString().includes(this.searchCode) : true
+      const searchCodeMatch = this.searchCode ? product.code.toString().toUpperCase().includes(this.searchCode.toUpperCase()) : true
       const categoryMatch = this.selectedCategory === 'todos' || product.category.toLowerCase() === this.selectedCategory.toLowerCase()
       return searchCodeMatch && categoryMatch
     };
+
     this.dataSource.filter = '' + Math.random()
+    this.noProductsFound = this.dataSource.filteredData.length === 0
   }
 
   onFilterChanged(event: { code: string; category: string }) {
@@ -93,8 +98,7 @@ export class ProductListComponent implements AfterViewInit {
     })
   }
 
-
-  confirmDelete(code: number) {
+  confirmDelete(code: string) {
     const dialogRef = this.dialog.open(ConfirmDeleteComponent, {
       width: '300px',
       data: { code }

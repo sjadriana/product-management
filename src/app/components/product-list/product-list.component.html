@@ -1,3 +1,4 @@
+<app-banner />
 <div class="product-list-container">
   <app-product-filters (filterChange)="onFilterChanged($event)"></app-product-filters>
   <button mat-button class="addNew" (click)="openProductForm()">
@@ -30,5 +31,12 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
+
+  <!-- Exibe mensagem quando não houver produtos -->
+  <div class="no-products-found" *ngIf="dataSource.filteredData.length === 0">
+    <p>Nenhum produto encontrado</p>
+  </div>
+
+
   <mat-paginator [length]="dataSource.data.length" [pageSize]="5" [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
 </div>

@@ -8,6 +8,7 @@
         <span>{{ category.label }}</span>
       </li>
     </ul>
+    <button class="clear-button" (click)="clearFilter()">Limpar Filtros</button>
     <div class="search-code">
       <input type="text" id="searchCode" class="custom-input" [(ngModel)]="searchCode"
         (ngModelChange)="filterProducts()" placeholder="Buscar por código">

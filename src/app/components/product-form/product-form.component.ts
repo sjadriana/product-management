@@ -51,7 +51,7 @@ export class ProductFormComponent {
   }
 
   codeValidator() {
-    return (control: AbstractControl<number | null>): Observable<ValidationErrors | null> => {
+    return (control: AbstractControl<string | null>): Observable<ValidationErrors | null> => {
       if (control.value === null) {
         return of(null)
       }
@@ -71,7 +71,6 @@ export class ProductFormComponent {
       this.dialogRef.close(updatedProduct) 
     }
   }
-
 
   onCancel(): void {
     this.dialogRef.close()
