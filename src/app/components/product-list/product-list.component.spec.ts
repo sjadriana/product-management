@@ -26,7 +26,7 @@ class MockProductService {
     return of(product);
   }
 
-  deleteProduct(code: number) {
+  deleteProduct(code: string) {
     console.log('Delete product called with code:', code);
     return of(code);
   }

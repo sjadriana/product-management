@@ -12,7 +12,7 @@ import { MatDialogModule } from '@angular/material/dialog'
 import { ProductService } from '../../services/product.service'
 
 interface ProductData {
-  code: number;
+  code: string;
   name: string;
   category: string;
 }
@@ -62,15 +62,16 @@ export class ProductFormComponent {
   }
 
   onSave(): void {
-    this.submitAttempted = true
+    this.submitAttempted = true;
     if (this.productForm.valid) {
       const updatedProduct = {
-        ...this.productForm.getRawValue(),  
-        code: this.data?.code || null       
+        ...this.productForm.getRawValue(),
+        code: this.productForm.get('code')?.value.toUpperCase()
       };
-      this.dialogRef.close(updatedProduct) 
+      this.dialogRef.close(updatedProduct);
     }
   }
+
 
   onCancel(): void {
     this.dialogRef.close()

@@ -1,42 +1,50 @@
-<app-banner />
+<app-banner></app-banner>
 <div class="product-list-container">
   <app-product-filters (filterChange)="onFilterChanged($event)"></app-product-filters>
+
   <button mat-button class="addNew" (click)="openProductForm()">
     <p>Adicionar Produto</p>
   </button>
-  <table mat-table [dataSource]="dataSource" matSort class="product-list-table">
+
+  <table mat-table [dataSource]="dataSource" matSort class="product-list-table" aria-label="Tabela de Produtos">
     <ng-container matColumnDef="code" class="mat-column-code">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Código </th>
-      <td mat-cell *matCellDef="let product"> {{ product.code }} </td>
+      <td mat-cell *matCellDef="let product">{{ product.code }}</td>
     </ng-container>
+
     <ng-container matColumnDef="name" class="mat-column-name">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Nome </th>
-      <td mat-cell *matCellDef="let product"> {{ product.name }} </td>
+      <td mat-cell *matCellDef="let product">{{ product.name }}</td>
     </ng-container>
+
     <ng-container matColumnDef="category" class="mat-column-category">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Categoria </th>
-      <td mat-cell *matCellDef="let product"> {{ product.category }} </td>
+      <td mat-cell *matCellDef="let product">{{ product.category }}</td>
     </ng-container>
+
     <ng-container matColumnDef="actions" class="mat-column-actions">
       <th mat-header-cell *matHeaderCellDef> Ações </th>
       <td mat-cell *matCellDef="let product">
-        <button mat-icon-button color="primary" (click)="openProductForm(product)">
+        <button mat-icon-button color="primary" (click)="openProductForm(product)"
+          [attr.aria-label]="'Editar produto ' + product.code">
           <mat-icon>edit</mat-icon>
         </button>
-        <button mat-icon-button color="warn" (click)="confirmDelete(product.code)">
+        <button mat-icon-button color="warn" (click)="confirmDelete(product.code)"
+          [attr.aria-label]="'Excluir produto ' + product.code">
           <mat-icon>delete</mat-icon>
         </button>
+
+
       </td>
     </ng-container>
+
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 
-  <!-- Exibe mensagem quando não houver produtos -->
   <div class="no-products-found" *ngIf="dataSource.filteredData.length === 0">
     <p>Nenhum produto encontrado</p>
   </div>
-
 
   <mat-paginator [length]="dataSource.data.length" [pageSize]="5" [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
 </div>

@@ -59,6 +59,7 @@ export class ProductListComponent implements AfterViewInit {
     });
   }
 
+
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator
     this.dataSource.sort = this.sort
@@ -66,20 +67,21 @@ export class ProductListComponent implements AfterViewInit {
 
   filterProducts() {
     this.dataSource.filterPredicate = (product: Product) => {
-      const searchCodeMatch = this.searchCode ? product.code.toString().toUpperCase().includes(this.searchCode.toUpperCase()) : true
+      const searchCodeMatch = this.searchCode ? product.code.toUpperCase().includes(this.searchCode.toUpperCase()) : true;
       const categoryMatch = this.selectedCategory === 'todos' || product.category.toLowerCase() === this.selectedCategory.toLowerCase()
       return searchCodeMatch && categoryMatch
-    };
+    }
 
     this.dataSource.filter = '' + Math.random()
     this.noProductsFound = this.dataSource.filteredData.length === 0
   }
 
   onFilterChanged(event: { code: string; category: string }) {
-    this.searchCode = event.code
+    this.searchCode = event.code.toUpperCase()
     this.selectedCategory = event.category
-    this.filterProducts()
+    this.filterProducts();
   }
+
 
   openProductForm(product?: Product) {
     const dialogRef = this.dialog.open(ProductFormComponent, {
