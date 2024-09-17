@@ -63,12 +63,15 @@ export class ProductListComponent implements AfterViewInit {
 
   filterProducts() {
     this.dataSource.filterPredicate = (product: Product) => {
-      const searchCodeMatch = this.searchCode ? product.code.toString().includes(this.searchCode) : true
-      const categoryMatch = this.selectedCategory === 'todos' || product.category.toLowerCase() === this.selectedCategory.toLowerCase()
-      return searchCodeMatch && categoryMatch
+      const searchCodeMatch = this.searchCode
+        ? product.code.toString().toUpperCase().includes(this.searchCode.toUpperCase())
+        : true;
+      const categoryMatch = this.selectedCategory === 'todos' || product.category.toLowerCase() === this.selectedCategory.toLowerCase();
+      return searchCodeMatch && categoryMatch;
     };
-    this.dataSource.filter = '' + Math.random()
+    this.dataSource.filter = '' + Math.random();
   }
+
 
   onFilterChanged(event: { code: string; category: string }) {
     this.searchCode = event.code
@@ -94,7 +97,7 @@ export class ProductListComponent implements AfterViewInit {
   }
 
 
-  confirmDelete(code: number) {
+  confirmDelete(code: string) {
     const dialogRef = this.dialog.open(ConfirmDeleteComponent, {
       width: '300px',
       data: { code }

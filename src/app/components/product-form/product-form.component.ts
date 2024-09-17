@@ -51,27 +51,26 @@ export class ProductFormComponent {
   }
 
   codeValidator() {
-    return (control: AbstractControl<number | null>): Observable<ValidationErrors | null> => {
+    return (control: AbstractControl<string | null>): Observable<ValidationErrors | null> => {
       if (control.value === null) {
-        return of(null)
+        return of(null);
       }
-      return this.productService.checkCodeExists(control.value).pipe(
+      return this.productService.checkCodeExists(control.value.toUpperCase()).pipe(
         map(exists => exists ? { codeTaken: true } : null)
-      )
-    }
+      );
+    };
   }
 
   onSave(): void {
-    this.submitAttempted = true
+    this.submitAttempted = true;
     if (this.productForm.valid) {
       const updatedProduct = {
-        ...this.productForm.getRawValue(),  
-        code: this.data?.code || null       
+        ...this.productForm.getRawValue(),
+        code: this.productForm.get('code')?.value.toUpperCase() || this.data?.code || null
       };
-      this.dialogRef.close(updatedProduct) 
+      this.dialogRef.close(updatedProduct);
     }
   }
-
 
   onCancel(): void {
     this.dialogRef.close()

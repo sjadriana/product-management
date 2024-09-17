@@ -4,7 +4,7 @@
     <div>
       <mat-form-field appearance="fill">
         <mat-label>Código</mat-label>
-        <input matInput formControlName="code" type="number" [attr.readonly]="isEditing ? true : null" />
+        <input matInput formControlName="code" type="string" [attr.readonly]="isEditing ? true : null" />
         <mat-error
           *ngIf="productForm.get('code')?.hasError('required') && (submitAttempted || productForm.get('code')?.touched)">
           O código é obrigatório.

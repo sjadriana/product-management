@@ -1,80 +1,74 @@
-::ng-deep table thead tr:first-child {
-  background-color: #161F27;
-  color: white;
-  font-size: medium;
-}
-
 .product-list-container {
   padding: 1rem;
 
-  .mat-column-code,
-  .mat-column-name,
-  .mat-column-category,
-  .mat-column-actions {
-    width: 15%;
-    max-width: 15%;
-    word-wrap: break-word !important;
-  }
+  .header {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
 
-  .addNew {
-    border-radius: 4px;
-    background-color: #F25722;
-    color: #fff;
-    text-transform: uppercase;
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    margin: 10px 0px 20px 0px
-  }
-}
-
-.product-list-table {
-  td.mat-cell {
-    button {
-      margin: 0 0.5rem;
+    .addNew {
+      border-radius: 4px;
+      background-color: #F25722;
+      color: #fff;
+      text-transform: uppercase;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
     }
   }
 
-  thead {
-    background-color: #F25722;
-  }
+  .content {
+    display: flex;
+    justify-content: space-between;
 
-}
+    .filters {
+      width: 35%;
+      margin-right: 2rem;
+    }
 
-mat-paginator {
-  margin-top: 1rem;
-}
+    .table-container {
+      width: 65%;
 
-::ng-deep .mat-dialog-container {
-  width: 90vw;
-}
+      ::ng-deep table thead tr:first-child {
+        background-color: #161F27;
+        color: white;
+        font-size: medium;
+      }
 
-mat-form-field {
-  width: 100%;
+      .mat-column-code,
+      .mat-column-name,
+      .mat-column-category,
+      .mat-column-actions {
+        width: 15%;
+        max-width: 15%;
+        word-wrap: break-word;
+      }
 
-}
+      .product-list-table {
+        thead {
+          background-color: #F25722;
+        }
 
-mat-dialog-content {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
+        td.mat-cell {
+          button {
+            margin: 0 0.5rem;
+          }
+        }
+      }
 
-button[mat-icon-button] {
-  &:focus {
-    outline: none;
-  }
-}
-
-@media (max-width: 768px) {
-  .product-list-container {
-    padding: 1rem;
-  }
-
-  .product-list-table {
-
-    th.mat-header-cell {
-      font-size: 0.875rem;
+      mat-paginator {
+        margin-top: 1rem;
+      }
     }
   }
 
+  @media (max-width: 768px) {
+    .content {
+      flex-direction: column;
+
+      .filters,
+      .table-container {
+        width: 100%;
+      }
+    }
+  }
 }

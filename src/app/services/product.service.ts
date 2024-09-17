@@ -15,134 +15,135 @@ export class ProductService {
     this.productsSubject.next([
       {
         "id": "1",
-        "code": 1011,
-        "name": "Produto 1",
-        "category": "Atacado"
+        "code": "XRT",
+        "name": "SPDR S&P Retail ETF",
+        "category": "Varejo"
       },
       {
         "id": "2",
-        "code": 1022,
-        "name": "Produto 2",
+        "code": "IBUY",
+        "name": "Amplify Online Retail ETF",
         "category": "Varejo"
       },
       {
         "id": "3",
-        "code": 1033,
-        "name": "Produto 3",
-        "category": "Internacional"
+        "code": "RTH",
+        "name": "VanEck Vectors Retail ETF",
+        "category": "Varejo"
       },
       {
         "id": "4",
-        "code": 1044,
-        "name": "Produto 4",
-        "category": "Atacado"
+        "code": "RCD",
+        "name": "Invesco S&P 500 Equal Weight Consumer Discretionary ETF",
+        "category": "Varejo"
       },
       {
         "id": "5",
-        "code": 1055,
-        "name": "Produto 5",
+        "code": "XLY",
+        "name": "Consumer Discretionary Select Sector SPDR Fund",
         "category": "Varejo"
       },
       {
         "id": "6",
-        "code": 1066,
-        "name": "Produto 6",
-        "category": "Internacional"
+        "code": "IYT",
+        "name": "iShares U.S. Transportation ETF",
+        "category": "Atacado"
       },
       {
         "id": "7",
-        "code": 1077,
-        "name": "Produto 7",
+        "code": "XTN",
+        "name": "SPDR S&P Transportation ETF",
         "category": "Atacado"
       },
       {
         "id": "8",
-        "code": 1088,
-        "name": "Produto 8",
-        "category": "Varejo"
+        "code": "PTF",
+        "name": "Invesco Dynamic Transportation ETF",
+        "category": "Atacado"
       },
       {
         "id": "9",
-        "code": 1099,
-        "name": "Produto 9",
-        "category": "Internacional"
+        "code": "CHIX",
+        "name": "Global X MSCI China Financials ETF",
+        "category": "Atacado"
       },
       {
         "id": "10",
-        "code": 1100,
-        "name": "Produto 10",
+        "code": "XLI",
+        "name": "Industrial Select Sector SPDR Fund",
         "category": "Atacado"
       },
       {
         "id": "11",
-        "code": 1111,
-        "name": "Produto 11",
-        "category": "Varejo"
+        "code": "VEU",
+        "name": "Vanguard FTSE All-World ex-US ETF",
+        "category": "Internacional"
       },
       {
         "id": "12",
-        "code": 1122,
-        "name": "Produto 12",
+        "code": "EEM",
+        "name": "iShares MSCI Emerging Markets ETF",
         "category": "Internacional"
       },
       {
         "id": "13",
-        "code": 1133,
-        "name": "Produto 13",
-        "category": "Atacado"
+        "code": "ACWX",
+        "name": "iShares MSCI ACWI ex U.S. ETF",
+        "category": "Internacional"
       },
       {
         "id": "14",
-        "code": 1144,
-        "name": "Produto 14",
-        "category": "Varejo"
+        "code": "VXUS",
+        "name": "Vanguard Total International Stock ETF",
+        "category": "Internacional"
       },
       {
         "id": "15",
-        "code": 1155,
-        "name": "Produto 15",
+        "code": "IOO",
+        "name": "iShares Global 100 ETF",
         "category": "Internacional"
       },
       {
         "id": "16",
-        "code": 1166,
-        "name": "Produto 16",
-        "category": "Atacado"
+        "code": "VEA",
+        "name": "Vanguard FTSE Developed Markets ETF",
+        "category": "Internacional"
       },
       {
         "id": "17",
-        "code": 1177,
-        "name": "Produto 17",
-        "category": "Varejo"
+        "code": "EFA",
+        "name": "iShares MSCI EAFE ETF",
+        "category": "Internacional"
       },
       {
         "id": "18",
-        "code": 1188,
-        "name": "Produto 18",
+        "code": "SCHF",
+        "name": "Schwab International Equity ETF",
         "category": "Internacional"
       },
       {
         "id": "19",
-        "code": 1199,
-        "name": "Produto 19",
-        "category": "Atacado"
+        "code": "AIA",
+        "name": "iShares Asia 50 ETF",
+        "category": "Internacional"
       },
       {
         "id": "20",
-        "code": 1200,
-        "name": "Produto 20",
-        "category": "Varejo"
+        "code": "CWI",
+        "name": "SPDR MSCI ACWI ex-US ETF",
+        "category": "Internacional"
       }
-    ])
+    ]
+    )
   }
 
   getCategories(): string[] {
     return this.categories
   }
 
-  checkCodeExists(code: number): Observable<boolean> {
+  checkCodeExists(code: string): Observable<boolean> {
     const products = this.productsSubject.getValue()
-    const exists = products.some(product => product.code === code)
+    const exists = products.some(product => product.code === code.toUpperCase())
     return of(exists)
   }
 
@@ -158,7 +159,7 @@ export class ProductService {
     this.productsSubject.next(products)
   }
 
-  deleteProduct(code: number): void {
+  deleteProduct(code: string): void {
     const products = this.productsSubject.getValue().filter(product => product.code !== code)
     this.productsSubject.next(products)
   }

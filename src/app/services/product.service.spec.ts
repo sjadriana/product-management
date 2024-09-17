@@ -21,9 +21,9 @@ describe('ProductService', () => {
 
 
   it('should check if a product code exists', (done: DoneFn) => {
-    service.checkCodeExists(1011).subscribe(exists => {
+    service.checkCodeExists('1011').subscribe(exists => {
       expect(exists).toBeTrue()
-      service.checkCodeExists(9999).subscribe(exists => {
+      service.checkCodeExists('9999').subscribe(exists => {
         expect(exists).toBeFalse()
         done()
       })
@@ -31,10 +31,9 @@ describe('ProductService', () => {
   })
 
 
-  it('should add a new product', () => {
-    const newProduct: Product = {
+  it('should add a new product', () => { const newProduct: Product = {
       id: '21',
-      code: 1211,
+      code: '1211',
       name: 'Produto 21',
       category: 'varejo'
     }
@@ -50,7 +49,7 @@ describe('ProductService', () => {
   it('should update an existing product', () => {
     const updatedProduct: Product = {
       id: '1',
-      code: 1011,
+      code: '1011',
       name: 'Produto Atualizado',
       category: 'varejo'
     }
@@ -64,7 +63,7 @@ describe('ProductService', () => {
   })
 
   it('should delete a product', () => {
-    const codeToDelete = 1011
+    const codeToDelete = '1011'
     service.deleteProduct(codeToDelete)
     service.products$.subscribe(products => {
       const product = products.find(p => p.code === codeToDelete)

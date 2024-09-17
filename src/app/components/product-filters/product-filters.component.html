@@ -1,16 +1,22 @@
 <div class="filtersTab">
   <p>Filtros:</p>
   <div class="container">
-    <ul class="tab">
-      <li *ngFor="let category of categories" class="item" [ngClass]="{ 'active': selectedCategory === category.value }"
-        (click)="selectCategory(category.value)" (keydown.enter)="selectCategory(category.value)"
-        (keydown.space)="selectCategory(category.value)" tabindex="0">
-        <span>{{ category.label }}</span>
-      </li>
-    </ul>
     <div class="search-code">
-      <input type="text" id="searchCode" class="custom-input" [(ngModel)]="searchCode"
-        (ngModelChange)="filterProducts()" placeholder="Buscar por código">
+      <mat-form-field appearance="outline" class="custom-mat-input">
+        <mat-label>Buscar por código</mat-label>
+        <input matInput [(ngModel)]="searchCode" (ngModelChange)="filterProducts()" placeholder="Buscar por código">
+      </mat-form-field>
+    </div>
+
+    <div class="category-select">
+      <mat-form-field appearance="outline" class="custom-mat-select">
+        <mat-label>Categoria</mat-label>
+        <mat-select [(value)]="selectedCategory" (selectionChange)="filterProducts()">
+          <mat-option *ngFor="let category of categories" [value]="category.value">
+            {{ category.label }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
   </div>
 </div>
