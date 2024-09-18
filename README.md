@@ -37,6 +37,10 @@ O **ProdutosApp** é uma aplicação SPA desenvolvida com Angular (versão 18.2.
 - **Filtros Dinâmicos**
   - Aplicação de filtros dinâmicos e possibilidade de expansão de linhas para visualização de descrições adicionais.
 
+  ## Acesso
+
+Você pode acessar a aplicação através do seguinte link: [https://producs-test.netlify.app/](https://producs-test.netlify.app/)
+
 ## Passo a Passo para Rodar a Aplicação
 
 1. **Clone o Repositório**
@@ -78,8 +82,7 @@ O **ProdutosApp** é uma aplicação SPA desenvolvida com Angular (versão 18.2.
     Isso executará os testes unitários via Karma.
 
 5. **Configuração de Linting e Pre-Commit**
-  - ESLint O projeto utiliza ESLint para garantir a qualidade do código. Verifique as regras e faça o linting com:
-
+  - ESLint O projeto utiliza ESLint para garantir a qualidade do código. Verifique as regras e  faça o linting com:
     ```bash
     npx eslint .
     ```
@@ -89,16 +92,16 @@ O **ProdutosApp** é uma aplicação SPA desenvolvida com Angular (versão 18.2.
   - Pre-Push: Linting e testes unitários são executados antes de cada push.
 
 ## Pendências Temporárias
-**Pendências Temporárias**
+  **Pendências Temporárias**
   - Persistência Temporária: As informações estão sendo mockadas e persistidas temporariamente.
   
-  **Testes End-to-End**: A funcionalidade de testes end-to-end ainda não foi implementada. Será necessário adicionar um pacote de teste end-to-end quando essa funcionalidade for necessária.
+  **Testes End-to-End**: A funcionalidade de testes end-to-end ainda não foi implementada. Será   necessário adicionar um pacote de teste end-to-end quando essa funcionalidade for necessária.
 
-**Notas Adicionais**
+  **Notas Adicionais**
   - Node.js: Este projeto requer Node.js versão 20 ou superior.
   - Angular CLI: Certifique-se de usar a versão 18.2.4 do Angular CLI.
 
-**Contribuição**
+  **Contribuição**
   - Se você deseja contribuir para o projeto, sinta-se à vontade para abrir uma issue ou enviar um pull request. Sua ajuda é sempre bem-vinda!
 
 
