@@ -2,6 +2,13 @@
 
 O **ProdutosApp** é uma aplicação SPA desenvolvida com Angular (versão 18.2.4) para gerenciamento de produtos. Utiliza as funcionalidades mais recentes do framework, incluindo componentes standalone e Angular Material, oferecendo uma interface moderna e eficiente.
 
+## Acesse a Aplicação
+
+Você pode acessar a aplicação online através deste link:
+
+🔗 [ProdutosApp - Demo](https://producs-test.netlify.app)
+
+
 ## Funcionalidades
 
 - **Consulta de Produtos**
@@ -78,27 +85,27 @@ O **ProdutosApp** é uma aplicação SPA desenvolvida com Angular (versão 18.2.
     Isso executará os testes unitários via Karma.
 
 5. **Configuração de Linting e Pre-Commit**
-  - ESLint O projeto utiliza ESLint para garantir a qualidade do código. Verifique as regras e faça o linting com:
+    - ESLint O projeto utiliza ESLint para garantir a qualidade do código. Verifique as regras e faça o linting com:
 
     ```bash
     npx eslint .
     ```
-    Husky O Husky está configurado para executar linting e testes antes dos commits e dos pushes. Certifique-se de que as verificações passam antes de fazer um commit ou um push.
+     Husky O Husky está configurado para executar linting e testes antes dos commits e dos pushes. Certifique-se de que as verificações passam antes de fazer um commit ou um push.
 
-  - Pre-Commit: Linting e testes unitários são executados antes de cada commit.
-  - Pre-Push: Linting e testes unitários são executados antes de cada push.
+    - Pre-Commit: Linting e testes unitários são executados antes de cada commit.
+    - Pre-Push: Linting e testes unitários são executados antes de cada push.
 
-## Pendências Temporárias
-**Pendências Temporárias**
+##   Pendências Temporárias
+  **Pendências Temporárias**
   - Persistência Temporária: As informações estão sendo mockadas e persistidas temporariamente.
   
-  **Testes End-to-End**: A funcionalidade de testes end-to-end ainda não foi implementada. Será necessário adicionar um pacote de teste end-to-end quando essa funcionalidade for necessária.
+   **Testes End-to-End**: A funcionalidade de testes end-to-end ainda não foi implementada. Será necessário adicionar um pacote de teste end-to-end quando essa funcionalidade for necessária.
 
-**Notas Adicionais**
+   **Notas Adicionais**
   - Node.js: Este projeto requer Node.js versão 20 ou superior.
   - Angular CLI: Certifique-se de usar a versão 18.2.4 do Angular CLI.
 
-**Contribuição**
+   **Contribuição**
   - Se você deseja contribuir para o projeto, sinta-se à vontade para abrir uma issue ou enviar um pull request. Sua ajuda é sempre bem-vinda!
 
 
